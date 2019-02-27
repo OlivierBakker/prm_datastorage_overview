@@ -424,3 +424,24 @@ a:focus, a:hover, a:active {
   background-color: #1a252f;
   border-color: #1a252f;
 }
+
+.btn-group-vertical.center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-light.custom {
+  background: #FFFFFF;
+  border-color: #A3A6A3;
+  border-style: "solid" ;
+  border-width: 1px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+
+.centered-list {
+  display: block;
+  margin: 0 auto;
+}
