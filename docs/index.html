@@ -179,27 +179,100 @@
     <div class="container">
       <h2 class="text-center text-uppercase">FAQ</h2>
       <hr class="database-dark mb-5">
-      <div class="row text-center">
+      <div class="row">
       <p>
-        Many of the questions you may have are adressed in the SOP version 1 or the working version, if your question is mentioned below please look in the SOP first to see if it awnsers your question.
-      If your question is not listed feel free to contact your datamanager.
+        Many of the questions you may have are adressed in the SOP version 1 or the working version. Below are awnsers to questions adressed and discussed in the SOP. The information is largely the same but this is for your convenience. If your question is not adressed please contact your datamaneger.
       </p>
  
       <ul class="centered-list">
-        <li class="list-group-item">1.1 Why is good data storage important?</li>
-        <li class="list-group-item">1.2 Where is data stored on UMCG research clusters?</li>
-        <li class="list-group-item">1.3 Do I require a datamangement plan?</li>
-        <li class="list-group-item">1.4 What is the datamangement workflow?</li>
-        <li class="list-group-item">1.5 How are permissions managed?</li>
-        <li class="list-group-item">1.6 Who are the datamangers and group owners?</li>
-        <li class="list-group-item">1.7 Who do I contact if I have questions?</li>
-        <li class="list-group-item">1.8 How do I submit a data transfer request to a data manager?</li>
-        <li class="list-group-item">1.9 How do I check the size of my transfer?</li>
-        <li class="list-group-item">1.10 What is, and how do I make a checksum?</li>
-        <li class="list-group-item">1.11 How do I automate checking md5sums? (working version only)</li>
-        <li class="list-group-item">1.12 What is and how do I make a symlink? (working version only)</li>
-        <li class="list-group-item">1.13 How do I decide what data is important and what data is not? (working version only)</li>
-        <li class="list-group-item">1.14 How to decide if data can be removed? (working version only)</li>
+        <li class="list-group-item font-weight-bold">1.1 Why is good data storage important?</li>
+        <li class="list-group-item">
+          Bad data storage is a cause of much frustration among research staff. It can be very hard to find the data you want and it involves inquiring with many people, sometimes over several days, before you find the data you need. This leads to unnecessary delays, bottlenecks and potential mistakes due to unclear annotation and organization. In the long term, poorly organized data can also give issues with reproducibility of our research. This is especially the case when the person who performed the research has already left, and no one really knows anymore where to find what they need. This goes against the FAIR principles we are aiming to adhere to. In addition, poor data storage leads to increased costs if many unused, deprecated or duplicated datasets are still kept.
+        </li>
+        <li class="list-group-item font-weight-bold">1.2 Where is data stored on UMCG research clusters?</li>
+        <li class="list-group-item">
+          On the UMCG clusters there are 2 major file systems, PRM and TMP. PRM is aimed at organized long term storage of datasets and code. TMP should only be used for intermediate storage and processing and data that has a lifespan of fewer than 3 months. Any files older than 3 months will be removed from TMP filesystems. This rule will be enforced on the new research cluster Gearshift further highlighting the importance of a good infrastructure for long term storage. Please note for different research clusters (i.e. Peregrine, Gearshift, Calculon etc.) and different filesystems (scratch, tmp, prm) different rules apply. For exact and up to date details please read the following page:
+
+          http://wiki.gcc.rug.nl/wiki/HPC_storage
+        </li>
+        <li class="list-group-item font-weight-bold">1.3 Do I require a datamangement plan?</li>
+        <li class="list-group-item">
+          Yes, if you are a PI with a new project or are applying for funding. The UMCG requires new projects to have a proper datamangement plan. In addition, more and more funding agencies are starting to require it as well. The UMCG offers a template for such a data management plan where the requirements are outlined. In this data management plan you could refer to this document to save you a lot of time in filling out the details. This document is available in the research toolbox on the UMCG intranet under the tab “data management”. 
+
+        </li>
+        <li class="list-group-item font-weight-bold">1.4 What is the datamangement workflow?</li>
+        <li class="list-group-item">
+          <p>
+          In organizing (novel) datasets there are 3 main actors, the researcher (RS) who produced or received the data, the principal investigator (PI) who is responsible for managing access and the data manager (DM). The main workflow for a data transfer is then as follows:
+          </p>
+          <p>
+          For novel datasets:
+          RS and PI make an estimate of what data will be generated and how large it will be > 
+          PI pre allocates the required space before the data is generated / received and makes sure the budget is available to do so > 
+          RS produces or receives data > 
+          RS organizes and annotates data according to SOP >
+          RS puts a transfer request to a DM and PI using the form (link in top right) > 
+          DM checks SOP requirements are met > 
+          PI checks if the requirements of potential data access requests are met >
+          Upon green light of PI DM transfers the data to permanent storage > 
+          DM puts a request to the RS to check the transfer went well > 
+          RS removes data from temporary storage (where applicable)
+           </p>
+
+          <p>
+          For existing datasets already on the cluster (assuming proper access control):
+          RS organizes and annotates data according to SOP > 
+          RS puts a transfer request to a DM and PI using the form (link in top right) > 
+          DM checks SOP requirements are met >
+          DM transfers data to PRM > 
+          DM puts a request to the RS to check the transfer went well >
+          RS removes data from temporary storage (where applicable)
+          </p>
+
+        </li>
+        <li class="list-group-item font-weight-bold">1.5 How are permissions managed?</li>
+        <li class="list-group-item">
+          Currently we are using the same permission system as it is currently implemented on the UMCG research clusters, where there are different research groups which each have permission to access certain datasets. As long as each group's data is located on their respective PRM or TMP file system no unwanted access is possible. 
+
+          The principal investigator (PI) or group owner on a project is responsible for assigning researchers to groups, and by extension managing the access to certain datasets. The PI is also responsible for ensuring that the required data access agreements are signed and approved for all researchers using the data. 
+        </li>
+
+        <li class="list-group-item font-weight-bold">1.6 Who are the datamangers and group owners?</li>
+        <li class="list-group-item">
+          To check who the data managers and group owners are for your group, login to the cluster and load the module “cluster-utils” and execute the “colleagues” command.
+        </li>
+        <li class="list-group-item font-weight-bold">1.7 Who do I contact if I have questions?</li>
+        <li class="list-group-item">
+          If you have any questions regarding data management on the UMCG research clusters contact Arnau Vich, Harm-Jan Westra, Dylan de Vries or Olivier Bakker form the Genetics Department. (For email addresses execute the commands in section 1.6 in the SOP) (as of Nov 2018)
+        </li>
+        <li class="list-group-item font-weight-bold">1.8 How do I submit a data transfer request to a data manager?</li>
+        <li class="list-group-item">
+          You can submit a request using the form by clicking the link in the top right of this page.
+        </li>
+        <li class="list-group-item font-weight-bold">1.9 How do I check the size of my transfer?</li>
+        <li class="list-group-item">
+          If you are unsure how to check the size of the transfer, change into the directory you want to transfer and run the "du -sh" command. Depending on how big the folder structure is this can take a while. For more detaills see SOP section 1.9
+        </li>
+        <li class="list-group-item font-weight-bold">1.10 What is, and how do I make a checksum?</li>
+        <li class="list-group-item">
+          Checksums are a code that represent the content of a file and can be used to easily check if 2 files are exactly the same. They can be generated using "md5sum" on linux of "md5" on mac. For more detaills see SOP section 1.10     
+        </li>
+        <li class="list-group-item font-weight-bold">1.11 How do I automate checking md5sums? (working version only)</li>
+        <li class="list-group-item">
+          Using the follwing command you cant check md5sums in a autoamted way "md5sum -c CHECKSUMS.txt". For more detaills see SOP section 1.11.
+        </li>
+        <li class="list-group-item font-weight-bold">1.12 What is and how do I make a symlink? (working version only)</li>
+        <li class="list-group-item">
+          Symlinks are like a shortcut to a file. They can be generated using the "ln -s file_to_link_to path_of_symlink". For more detaills see SOP section 1.12
+        </li> 
+        <li class="list-group-item font-weight-bold">1.13 How do I decide what data is important and what data is not? (working version only)</li>
+        <li class="list-group-item">
+          This is something you have to discuss with your PI and the other people using the data. For more detaills see SOP section 1.13
+        </li>
+        <li class="list-group-item font-weight-bold">1.14 How to decide if data can be removed? (working version only)</li>
+        <li class="list-group-item">
+          Before you remove any data always consult your PI and any other PI’s that might use the data to make sure that it can be removed. If you request a dataset to be removed on PRM through your data manager, also note the responsible PI’s for that dataset. Your data manager will then contact the relevant PI’s to make sure that the data can be removed from PRM.
+        </li>
       </ul>
 
 
